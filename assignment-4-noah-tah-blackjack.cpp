@@ -104,14 +104,17 @@ void displayDealerHand(Dealer &dealer) {
 	std::cout << "\n";
 };
 
+// Display the player's total
 void displayPlayerTotal(Player &player) {
 	std::cout << "Player's total: " << player.total << "\n";
 };
 
+// Display the dealer's total
 void displayDealerTotal(Dealer &dealer) {
 	std::cout << "Dealer's total: " << dealer.total << "\n";
 };
 
+// Display the winner based on the player and dealer's totals
 void displayWinner(Player &player, Dealer &dealer) {
 	if (player.total > 21) {
 		std::cout << "Player busts! Dealer wins!\n";
@@ -126,6 +129,9 @@ void displayWinner(Player &player, Dealer &dealer) {
 	};
 };
 
+// Main blackjack game Loop that will deal the initial 2 cards to the player and dealer, then ask the player to hit or stay
+// If the player stays, the dealer will hit until they reach 17 or higher
+// Then the winner will be displayed
 void blackjackGameLoop() {
 	Player player;
 	Dealer dealer;
@@ -164,6 +170,7 @@ void blackjackGameLoop() {
 	displayWinner(player, dealer);
 };
 
+// Ask the player if they want to play again
 void playAgain() {
 	char choice;
 	std::cout << "Do you want to play again? (y/n): ";
@@ -186,7 +193,12 @@ void startGame() {
 	playAgain();
 };
 
-
+// Main function that will "seed" the random number generator and start the game
+// What does "seeding" the number generator mean? 
+// Seeding means we initialize it with a starting value.
+// We use time(0) to get the current time in seconds, since this is the most
+// likely to be different each time the program is run.
+// This will give us a different random number each time the program is run.
 int main() {
 	srand(time(0));
 	startGame();
