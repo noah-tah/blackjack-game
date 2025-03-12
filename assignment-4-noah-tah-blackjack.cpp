@@ -67,6 +67,10 @@ void dealPlayer(Player &player) {
 	player.hand[player.handSize] = card;
 	player.total += card.value;
 	player.handSize++;
+	if (player.handSize == 5 && player.total <= 21) {
+		std::cout << "Player has 5 cards and is less than or equal to 21. Player wins!\n";
+		playAgain();
+	};
 };
 
 // Same as the player, but for the dealer
@@ -76,6 +80,10 @@ void dealDealer(Dealer &dealer) {
 	dealer.hand[dealer.handSize] = card;
 	dealer.total += card.value;
 	dealer.handSize++;
+	if (dealer.handSize == 5 && dealer.total <= 21) {
+		std::cout << "Dealer has 5 cards and is less than or equal to 21. Dealer wins!\n";
+		playAgain();
+	};
 };
 
 // Display the player's hand with a for loop
